@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Supermercado+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cantarell:ital@1&display=swap");
 
 @font-face {
 	font-family: "NasalizationRg-Regular";
@@ -60,12 +60,12 @@
 }
 
 .titlebar-minimize {
-	font-family: "Supermercado One", sans-serif;
+	font-family: "Cantarell", sans-serif;
 }
 
 .titlebar-minimize:hover {
 	fill: white;
-	background: red;
+	background: rgba(99, 99, 99, 0.3);
 }
 
 .titlebar-close:hover {
