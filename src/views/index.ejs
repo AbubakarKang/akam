@@ -10,5 +10,12 @@
 <body>
     <!-- Title bar -->
     <%- include('./titlebar') %>
-</body>
+
+    <!-- Display pages depending on login status -->
+    <% if (isLoggedIn) { %>
+        <%- include("./main-page"); %>
+    <% } else { %>
+        <%- include("./login-page"); %>
+    <% } %>
+    </body>
 </html>

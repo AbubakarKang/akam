@@ -1,7 +1,9 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const ipc = ipcMain;
-const ejsElectron = require("ejs-electron").data("username", "Abubakar");
+const ejsElectron = require("ejs-electron");
+
+const loggedIn = false;
 
 if (require("electron-squirrel-startup")) {
 	app.quit();
@@ -20,6 +22,8 @@ const createWindow = () => {
 			contextIsolation: false,
 		},
 	});
+
+	ejsElectron.data("isLoggedIn", loggedIn);
 
 	mainWindow.loadURL(path.join(__dirname, "views/index.ejs"));
 
