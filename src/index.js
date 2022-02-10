@@ -46,3 +46,7 @@ app.on("activate", () => {
 		createWindow();
 	}
 });
+
+ipc.on("login-request", () => {
+	console.log("login-request");
+});
