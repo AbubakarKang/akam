@@ -1,3 +1,7 @@
+//--------------------------\\ VARIABLES //--------------------------\\
+
+require("dotenv").config();
+
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const ipc = ipcMain;
@@ -5,12 +9,19 @@ const ejsElectron = require("ejs-electron");
 
 const loggedIn = false;
 
+//--------------------------\\ MONGOOSE //--------------------------\\
+
+const mongoose = require("mongoose");
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
+
+//--------------------------\\ FUNCTIONS //--------------------------\\
+
 if (require("electron-squirrel-startup")) {
 	app.quit();
 }
 
+// Creating browser window
 const createWindow = () => {
-	// Create the browser window.
 	const mainWindow = new BrowserWindow({
 		width: 1000,
 		height: 600,
@@ -33,6 +44,8 @@ const createWindow = () => {
 	ipc.on("minimizeApp", () => mainWindow.minimize());
 };
 
+//------------------------\\ APP FUNCTIONS //------------------------\\
+
 app.on("ready", createWindow);
 
 app.on("window-all-closed", () => {
@@ -47,6 +60,9 @@ app.on("activate", () => {
 	}
 });
 
-ipc.on("login-request", () => {
-	console.log("login-request");
+//-------------------------\\ IPC CALLS //-------------------------\\
+
+// User login request (PROTOTYPE)
+ipc.on("login-request", (_, receivedData) => {
+	console.log(`Username: ${receivedData.username} | Password: ${receivedData.password}`);
 });
