@@ -63,6 +63,6 @@ app.on("activate", () => {
 //-------------------------\\ IPC CALLS //-------------------------\\
 
 // User login request (PROTOTYPE)
-ipc.on("login-request", (_, receivedData) => {
+ipc.on("login-request", (event, receivedData) => {
 	console.log(`Username: ${receivedData.username} | Password: ${receivedData.password}`);
 });
