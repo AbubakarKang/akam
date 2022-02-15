@@ -1,2 +1,5 @@
+# node_modules - too large of a size and unncessary
 node_modules
+
+# .env - contains private and confedential information
 .env
