@@ -8,9 +8,6 @@
     <script src="../js/index.js" defer></script>
 </head>
 <body>
-    <!-- Title bar -->
-    <%- include('./titlebar') %>
-
     <!-- Display pages depending on login status -->
     <% if (isLoggedIn) { %>
         <%- include("./main-page"); %>

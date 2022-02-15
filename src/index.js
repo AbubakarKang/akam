@@ -3,9 +3,10 @@
 require("dotenv").config();
 
 const { app, BrowserWindow, ipcMain } = require("electron");
+const ejsElectron = require("ejs-electron");
+const User = require("./models/users");
 const path = require("path");
 const ipc = ipcMain;
-const ejsElectron = require("ejs-electron");
 
 const loggedIn = false;
 
@@ -65,4 +66,13 @@ app.on("activate", () => {
 // User login request (PROTOTYPE)
 ipc.on("login-request", (event, receivedData) => {
 	console.log(`Username: ${receivedData.username} | Password: ${receivedData.password}`);
+});
+
+ipc.on("register-request", (event, receivedData) => {
+	let newUser = new User({
+		username: receivedData.username,
+		email: receivedData.email,
+		password: receivedData.password,
+	});
+	newUser.save();
 });

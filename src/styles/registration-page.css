@@ -7,31 +7,31 @@
 	--third-color: rgb(226, 226, 226);
 }
 
-.login-page {
+.registration-page {
+	top: 20px;
 	left: 50%;
-	bottom: 0;
 	width: 950px;
 	height: 560px;
 	position: absolute;
 	transform: translateX(-50%);
 }
 
-.login-page-img,
-.login-page-title,
-.login-page-inputs {
+.registration-page-img,
+.registration-page-title,
+.registration-page-inputs {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-.login-page-title {
+.registration-page-title {
 	font-size: 40px;
 	font-weight: bold;
 	color: var(--secondary-color);
 	font-family: "Montserrat", sans-serif;
 }
 
-.login-page-inputs {
+.registration-page-inputs {
 	margin-top: 20px;
 	flex-direction: column;
 }
@@ -69,14 +69,22 @@
 	background: var(--primary-color);
 }
 
-.login-page-button {
+.input-div .e-input.focused {
+	width: 50px;
+}
+
+.input-div .pc-input.focused {
+	width: 150px;
+}
+
+.registration-page-button {
 	left: 50%;
-	margin-top: 30px;
+	bottom: 25px;
 	position: absolute;
 	transform: translateX(-50%);
 }
 
-.login-page-btn {
+.registration-page-btn {
 	border: none;
 	outline: none;
 	font-size: 18px;
@@ -89,24 +97,25 @@
 	font-family: "Montserrat", sans-serif;
 }
 
-.login-page-btn:hover {
+.registration-page-btn:hover {
 	transform: scale(1.1);
 	box-shadow: 0px 0px 5px var(--secondary-color);
 }
 
-.username-input {
-	margin-bottom: 10px;
-}
-.password-input {
-	margin-top: 10px;
-}
-
-.offer-registration-link {
+.offer-login-link {
 	left: 50%;
-	bottom: 100px;
+	bottom: 0;
 	position: absolute;
 	font-style: italic;
 	text-decoration: none;
 	color: var(--third-color);
 	transform: translateX(-50%);
+}
+
+.email-input {
+	margin: 10px 0;
+}
+
+.password-confirm-input {
+	margin-top: 10px;
 }

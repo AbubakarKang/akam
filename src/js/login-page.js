@@ -2,9 +2,9 @@
 
 const usernameInput = document.querySelector("#username-input");
 const passwordInput = document.querySelector("#password-input");
+const loginButton = document.querySelector("[data-login-button]");
 const usernameInputLabel = document.querySelector("[data-username-input-label]");
 const passwordInputLabel = document.querySelector("[data-password-input-label]");
-const loginButton = document.querySelector("[data-login-button]");
 
 //------------------------\\ FUNCTIONS //-------------------------\\
 
