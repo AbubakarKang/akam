@@ -2,18 +2,20 @@
 
 require("dotenv").config();
 
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain, ipcRenderer } = require("electron");
 const ejsElectron = require("ejs-electron");
 const User = require("./models/users");
 const path = require("path");
 const ipc = ipcMain;
 
-const loggedIn = false;
+var loggedIn = false;
 
 //--------------------------\\ MONGOOSE //--------------------------\\
 
 const mongoose = require("mongoose");
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
+
+const db = mongoose.connection;
 
 //--------------------------\\ FUNCTIONS //--------------------------\\
 
@@ -64,8 +66,19 @@ app.on("activate", () => {
 //-------------------------\\ IPC CALLS //-------------------------\\
 
 // User login request (PROTOTYPE)
-ipc.on("login-request", (event, receivedData) => {
-	console.log(`Username: ${receivedData.username} | Password: ${receivedData.password}`);
+ipc.on("login-request", async (event, receivedData) => {
+	let userArray = await User.find({ username: receivedData.username });
+	if (userArray.length != 1) {
+		console.log("User not found");
+	} else {
+		let user = userArray[0];
+		if (user.password == receivedData.password) {
+			loggedIn = true;
+			console.log("User logged in");
+		} else {
+			console.log("Wrong password");
+		}
+	}
 });
 
 ipc.on("register-request", (event, receivedData) => {

@@ -36,3 +36,11 @@ loginButton.addEventListener("click", () => {
 		password: passwordInput.value,
 	});
 });
+
+// ipc.on("login-response", (event, receivedData) => {
+// 	console.log(`${receivedData.success} | ${receivedData.message}`);
+// });
+
+// ipc.on("login-response", (event, receivedData) => {
+// 	console.log(`${receivedData.success} | ${receivedData.message}`);
+// });
