@@ -82,6 +82,7 @@ ipc.on("login-request", async (event, receivedData) => {
 	}
 });
 
+// User registration request (PROTOTYPE)
 ipc.on("register-request", (event, receivedData) => {
 	let newPassword = encryptPassword(receivedData.password);
 	let newUser = new User({
@@ -92,6 +93,7 @@ ipc.on("register-request", (event, receivedData) => {
 	newUser.save();
 });
 
+// Password encryption function
 function encryptPassword(password) {
 	let passHandler = new passwordHandler();
 	let encryptPattern = passHandler.encryptionPattern();
