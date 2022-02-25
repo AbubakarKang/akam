@@ -42,16 +42,33 @@ passwordConfirmInput.addEventListener("focusout", () => {
 });
 
 registrationButton.addEventListener("click", () => {
+	let special = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+
 	// get all inputs from input fields and then compare password and password confirm input
 	let email = emailInput.value;
 	let username = usernameInput.value;
 	let password = passwordInput.value;
 	let passwordConfirm = passwordConfirmInput.value;
-	if (password === passwordConfirm) {
-		ipc.send("register-request", {
-			username: username,
-			email: email,
-			password: password,
-		});
+	if (email == "" || email == null || username == "" || username == null || password == "" || password == null || passwordConfirm == "" || passwordConfirm == null) {
+		console.log("Please fill all fields");
+		return;
 	}
+	if (password.length < 8 || password.length > 25) {
+		console.log("Password must be between 8 and 25 characters long");
+		return;
+	}
+
+	if (email.includes("@") == false) {
+		console.log("Email must be valid");
+		return;
+	}
+	if (password != passwordConfirm) {
+		console.log("Passwords don't match");
+		return;
+	}
+	ipc.send("register-request", {
+		username: username,
+		email: email,
+		password: password,
+	});
 });
