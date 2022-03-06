@@ -4,7 +4,6 @@ require("dotenv").config();
 
 const { app, BrowserWindow, ipcMain, ipcRenderer } = require("electron");
 const ejsElectron = require("ejs-electron");
-const passwordHandler = require("./encryption");
 const User = require("./models/users");
 const path = require("path");
 const ipc = ipcMain;
@@ -84,28 +83,10 @@ ipc.on("login-request", async (event, receivedData) => {
 
 // User registration request (PROTOTYPE)
 ipc.on("register-request", (event, receivedData) => {
-	let newPassword = encryptPassword(receivedData.password);
 	let newUser = new User({
 		username: receivedData.username,
 		email: receivedData.email,
-		password: newPassword,
+		password: receivedData.password,
 	});
 	newUser.save();
 });
-
-// Password encryption function
-function encryptPassword(password) {
-	let passHandler = new passwordHandler();
-	let encryptPattern = passHandler.encryptionPattern();
-	let passwordCharsArray = password.split("");
-
-	let encryptedPassword = "";
-	passwordCharsArray.forEach(char => {
-		encryptPattern.find(pattern => {
-			if (pattern.character == char) {
-				encryptedPassword += password.replace(char, pattern.replacingCharacter);
-			}
-		});
-	});
-	return encryptedPassword;
-}
