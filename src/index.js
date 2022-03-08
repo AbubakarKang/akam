@@ -5,6 +5,7 @@ require("dotenv").config();
 const { app, BrowserWindow, ipcMain, ipcRenderer } = require("electron");
 const ejsElectron = require("ejs-electron");
 const User = require("./models/users");
+const bcryptjs = require("bcryptjs");
 const path = require("path");
 const ipc = ipcMain;
 
@@ -83,10 +84,13 @@ ipc.on("login-request", async (event, receivedData) => {
 
 // User registration request (PROTOTYPE)
 ipc.on("register-request", (event, receivedData) => {
+	let salt = bcryptjs.genSaltSync(10);
+	let hashedPassword = bcryptjs.hashSync(receivedData.password, salt);
+
 	let newUser = new User({
 		username: receivedData.username,
 		email: receivedData.email,
-		password: receivedData.password,
+		password: hashedPassword,
 	});
 	newUser.save();
 });
