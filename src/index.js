@@ -21,7 +21,7 @@ const createWindow = () => {
 		},
 	});
 
-	mainWindow.loadURL(path.join(__dirname, "views/index.ejs"));
+	mainWindow.loadURL(path.join(__dirname, "views/ejs/index.ejs"));
 };
 
 //------------------------\\ APP FUNCTIONS //------------------------\\
