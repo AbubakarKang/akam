@@ -22,6 +22,9 @@ const createWindow = () => {
 	});
 
 	mainWindow.loadURL(path.join(__dirname, "views/index.ejs"));
+
+	ipc.on("closeApp", () => mainWindow.close());
+	ipc.on("minimizeApp", () => mainWindow.minimize());
 };
 
 //------------------------\\ APP FUNCTIONS //------------------------\\
