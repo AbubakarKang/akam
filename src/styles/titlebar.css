@@ -8,20 +8,25 @@
 	font-style: normal;
 }
 
-.drag {
-	-webkit-app-region: drag;
+.right-side,
+.minimize-btn,
+.close-btn,
+.titlebar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.no-drag {
+.right-side,
+.left-side {
 	-webkit-app-region: no-drag;
 }
 
 .titlebar {
 	height: 25px;
 	width: 1000px;
-	display: flex;
 	overflow: hidden;
-	align-items: center;
+	-webkit-app-region: drag;
 	justify-content: space-between;
 	background: var(--primary-color);
 	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.8);
@@ -33,21 +38,12 @@
 	font-family: "Nasalization", sans-serif;
 }
 
-.right-side {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
-
 .minimize-btn,
 .close-btn {
 	width: 25px;
 	height: 25px;
-	display: flex;
 	color: white;
 	cursor: pointer;
-	align-items: center;
-	justify-content: center;
 }
 
 .minimize-btn:hover {
@@ -55,6 +51,7 @@
 }
 
 .close-btn:hover {
+	font-weight: bold;
 	background: red;
 }
 
