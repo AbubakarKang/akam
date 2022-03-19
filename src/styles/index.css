@@ -14,3 +14,11 @@ body {
 	overflow: hidden;
 	background: var(--secondary-color);
 }
+
+.index-body-content {
+	bottom: 0;
+	width: 100%;
+	z-index: -1;
+	height: 575px;
+	margin-top: 25px;
+}
