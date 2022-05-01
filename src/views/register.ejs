@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/index.css">
     <link rel="stylesheet" href="../styles/register.css">
+    <script src="../js/register.js" defer></script>
 </head>
 <body>
     <%- include("./titlebar"); %>
@@ -13,24 +14,24 @@
     <div class="register-title">Register</div>
     <div class="register-inputs">
         <div class="username-input">
-            <input type="text" id="username" name="username">
+            <input data-username-input type="text" id="username" name="username">
             <label for="username">Username</label>
         </div>
         <div class="password-input">
-            <input type="password" id="password" name="password">
+            <input data-password-input type="password" id="password" name="password">
             <label for="password">Password</label>
         </div>
         <div class="password-confirm-input">
-            <input type="password" id="password-confirm" name="password-confirm">
+            <input data-password-confirm-input type="password" id="password-confirm" name="password-confirm">
             <label for="password-confirm">Confirm Password</label>
         </div>
         <div class="email-input">
-            <input type="email" id="email" name="email">
+            <input data-email-input type="email" id="email" name="email">
             <label for="email">Email</label>
         </div>
     </div>
     <div class="register-button">
-        <button>Register</button>
+        <button data-register-button>Register</button>
     </div>
     <div class="yes-account"><a href="./login.ejs">Already have an account? Login now!</a></div>
 </body>
