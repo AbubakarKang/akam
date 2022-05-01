@@ -1,2 +1,5 @@
 # File is too large and unncessary
 node_modules
+
+# Contains private information
+.env
