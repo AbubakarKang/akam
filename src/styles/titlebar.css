@@ -23,8 +23,10 @@
 }
 
 .titlebar {
+	top: 0;
 	height: 25px;
 	width: 1000px;
+	position: fixed;
 	overflow: hidden;
 	-webkit-app-region: drag;
 	justify-content: space-between;

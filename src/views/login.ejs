@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../styles/login.css">
 </head>
 <body>
+    <%- include("./titlebar"); %>
+
     <div class="login-title">Login</div>
     <div class="login-inputs">
         <div class="username-input">
@@ -23,6 +25,6 @@
     <div class="login-button">
         <button>Login</button>
     </div>
-    <div class="no-account"><a href="#">Don't have an account? Register now!</a></div>
+    <div class="no-account"><a href="./register.ejs">Don't have an account? Register now!</a></div>
 </body>
 </html>
