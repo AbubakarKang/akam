@@ -20,23 +20,23 @@ registerButton.addEventListener("click", () => {
 
 	// ** alert functions are to be replaced with custom error display messages
 	if (email === "" || username === "" || password === "" || passwordConfirm === "") {
-		alert("Please fill all fields");
+		return alert("Please fill all fields");
 	} else if (password !== passwordConfirm) {
-		alert("Passwords do not match");
+		return alert("Passwords do not match");
 	} else if (password.length < 6) {
-		alert("Password must be at least 6 characters long");
+		return alert("Password must be at least 6 characters long");
 	} else if (password.length > 20) {
-		alert("Password must be less than 20 characters long");
+		return alert("Password must be less than 20 characters long");
 	} else if (!email.includes("@")) {
-		alert("Please enter a valid email");
+		return alert("Please enter a valid email");
 	} else if (username.length < 6) {
-		alert("Username must be at least 6 characters long");
+		return alert("Username must be at least 6 characters long");
 	} else if (username.length > 15) {
-		alert("Username must be less than 20 characters long");
+		return alert("Username must be less than 20 characters long");
 	} else if (username.includes(" ")) {
-		alert("Username cannot contain spaces");
+		return alert("Username cannot contain spaces");
 	} else if (username.includes("!@#$%^&*()_+")) {
-		alert("Username can only contain letters, numbers and underscores");
+		return alert("Username can only contain letters, numbers and underscores");
 	}
 	// ** Code below is to be replaced with a function which makes a call to the server to register the user
 	console.log("Registered");
