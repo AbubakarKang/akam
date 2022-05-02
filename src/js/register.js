@@ -35,7 +35,7 @@ registerButton.addEventListener("click", () => {
 		alert("Username must be less than 20 characters long");
 	} else if (username.includes(" ")) {
 		alert("Username cannot contain spaces");
-	} else if (!username.includes(allowedUsernameChars)) {
+	} else if (username.includes("!@#$%^&*()_+")) {
 		alert("Username can only contain letters, numbers and underscores");
 	}
 	// ** Code below is to be replaced with a function which makes a call to the server to register the user
