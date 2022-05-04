@@ -4,6 +4,7 @@ require("dotenv").config();
 
 const { app, BrowserWindow, ipcMain } = require("electron");
 const ejsElectron = require("ejs-electron");
+const User = require("./models/users");
 const mongoose = require("mongoose");
 const bcryptjs = require("bcryptjs");
 const path = require("path");
@@ -44,7 +45,14 @@ const createWindow = () => {
 		let dataPassword = data.password;
 
 		let salt = bcryptjs.genSaltSync(10);
-		let hashedPassword = bcryptjs.hashSync(receivedData.password, salt);
+		let hashedPassword = bcryptjs.hashSync(dataPassword, salt);
+
+		let newUser = new User({
+			username: data.username,
+			email: data.email,
+			password: hashedPassword,
+		});
+		newUser.save();
 	});
 };
 
