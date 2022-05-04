@@ -10,6 +10,9 @@ const passwordConfirmInput = document.querySelector("[data-password-confirm-inpu
 
 const allowedUsernameChars = "abcdefghijklmnopqrstuvwxyz0123456789_ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+const { ipcRenderer } = require("electron");
+const ipc = ipcRenderer;
+
 //-----------------------------\\ FUNCTIONS //-----------------------------\\
 
 registerButton.addEventListener("click", () => {
@@ -38,6 +41,10 @@ registerButton.addEventListener("click", () => {
 	} else if (username.includes("!@#$%^&*()_+")) {
 		return alert("Username can only contain letters, numbers and underscores");
 	}
-	// ** Code below is to be replaced with a function which makes a call to the server to register the user
-	console.log("Registered");
+
+	ipc.send("registerUser", {
+		email,
+		username,
+		password,
+	});
 });
