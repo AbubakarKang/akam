@@ -20,4 +20,4 @@
 
 ### Release
 
-➤ There are NO releases yet because the application is WORK-IN-PROGRESS 🚧.
+➤ There are NO releases yet because the application is WORK-IN-PROGRESS. 🚧
