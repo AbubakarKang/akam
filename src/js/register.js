@@ -3,6 +3,7 @@
 const errorText = document.querySelector("[data-error-text]");
 const emailInput = document.querySelector("[data-email-input]");
 const errorDisplay = document.querySelector("[data-error-blackbg]");
+const allInputs = document.getElementsByClassName("register-input");
 const usernameInput = document.querySelector("[data-username-input]");
 const passwordInput = document.querySelector("[data-password-input]");
 const registerButton = document.querySelector("[data-register-button]");
@@ -59,3 +60,17 @@ const customAlert = error => {
 		errorDisplay.style.display = "none";
 	});
 };
+
+Array.from(allInputs).forEach(input => {
+	let inputLabel = findLabelForInput(input);
+	input.addEventListener("input", () => {
+		inputLabel.style.marginTop = "-10px";
+	});
+});
+
+function findLabelForInput(input) {
+	labels = document.getElementsByTagName("label");
+	for (var i = 0; i < labels.length; i++) {
+		if (labels[i].htmlFor == input.id) return labels[i];
+	}
+}
