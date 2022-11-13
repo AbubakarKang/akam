@@ -1,9 +1,12 @@
 //-----------------------------\\ ELEMENTS //-----------------------------\\
 
+const errorText = document.querySelector("[data-error-text]");
 const emailInput = document.querySelector("[data-email-input]");
+const errorDisplay = document.querySelector("[data-error-blackbg]");
 const usernameInput = document.querySelector("[data-username-input]");
 const passwordInput = document.querySelector("[data-password-input]");
 const registerButton = document.querySelector("[data-register-button]");
+const errorCloseButton = document.querySelector("[data-error-close-button]");
 const passwordConfirmInput = document.querySelector("[data-password-confirm-input]");
 
 //------------------------------\\ OTHERS //-------------------------------\\
@@ -23,23 +26,23 @@ registerButton.addEventListener("click", () => {
 
 	// ** alert functions are to be replaced with custom error display messages
 	if (email === "" || username === "" || password === "" || passwordConfirm === "") {
-		return alert("Please fill all fields");
+		return customAlert("Please fill all fields");
 	} else if (password !== passwordConfirm) {
-		return alert("Passwords do not match");
+		return customAlert("Passwords do not match");
 	} else if (password.length < 6) {
-		return alert("Password must be at least 6 characters long");
+		return customAlert("Password must be at least 6 characters long");
 	} else if (password.length > 20) {
-		return alert("Password must be less than 20 characters long");
+		return customAlert("Password must be less than 20 characters long");
 	} else if (!email.includes("@")) {
-		return alert("Please enter a valid email");
+		return customAlert("Please enter a valid email");
 	} else if (username.length < 6) {
-		return alert("Username must be at least 6 characters long");
+		return customAlert("Username must be at least 6 characters long");
 	} else if (username.length > 15) {
-		return alert("Username must be less than 20 characters long");
+		return customAlert("Username must be less than 20 characters long");
 	} else if (username.includes(" ")) {
-		return alert("Username cannot contain spaces");
+		return customAlert("Username cannot contain spaces");
 	} else if (username.includes("!@#$%^&*()_+")) {
-		return alert("Username can only contain letters, numbers and underscores");
+		return customAlert("Username can only contain letters, numbers and underscores");
 	}
 
 	ipc.send("registerUser", {
@@ -48,3 +51,11 @@ registerButton.addEventListener("click", () => {
 		password,
 	});
 });
+
+const customAlert = error => {
+	errorText.innerText = error;
+	errorDisplay.style.display = "block";
+	errorCloseButton.addEventListener("click", () => {
+		errorDisplay.style.display = "none";
+	});
+};

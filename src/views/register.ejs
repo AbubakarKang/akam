@@ -9,6 +9,12 @@
     <script src="../js/register.js" defer></script>
 </head>
 <body>
+    <div data-error-blackbg class="error-blackbg">
+		<div class="error-box">
+			<div data-error-text></div>
+			<button data-error-close-button class="error-close-button">Close</button>
+		</div>
+	</div>
     <%- include("./titlebar"); %>
 
     <div class="register-title">Register</div>
