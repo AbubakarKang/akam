@@ -14,7 +14,7 @@
 
 1. Copy the repository into your system.
 1. Use `npm i` to install all the necessary dependencies.
-1. Create a `.env` file in the `src` folder.
+1. Create a `.env` file in the root folder.
 1. Add `DATABASE_URL=<connection to your mongodb database>` in the `.env` file.
 1. Make any changes you want and create a pull request.
 
