@@ -10,11 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "dotenv": "^16.0.0",
+    "dotenv": "^16.0.3",
     "ejs-electron": "^2.1.1",
-    "electron": "^17.1.2",
-    "mongoose": "^6.2.6",
-    "passport": "^0.5.2",
+    "electron": "^21.2.3",
+    "mongoose": "^6.7.2",
+    "passport": "^0.6.0",
     "passport-local": "^1.0.0"
   }
 }
