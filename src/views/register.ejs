@@ -7,38 +7,39 @@
     <link rel="stylesheet" href="../styles/index.css">
     <link rel="stylesheet" href="../styles/register.css">
     <script src="../js/register.js" defer></script>
+    <script src="../js/index.js" defer></script>
 </head>
 <body>
-    <div data-error-blackbg class="error-blackbg">
-		<div class="error-box">
-			<div data-error-text></div>
-			<button data-error-close-button class="error-close-button">Close</button>
-		</div>
-	</div>
-    <%- include("./titlebar"); %>
-
-    <div class="register-title">Register</div>
-    <div class="register-inputs">
-        <div class="username-input">
-            <input data-username-input type="text" id="username" name="username" class="register-input">
-            <label for="username">Username</label>
+    <div data-register-panel class="register-panel">
+        <div data-error-blackbg class="error-blackbg">
+            <div class="error-box">
+                <div data-error-text></div>
+                <button data-error-close-button class="error-close-button">Close</button>
+            </div>
         </div>
-        <div class="password-input">
-            <input data-password-input type="password" id="password" name="password" class="register-input">
-            <label for="password">Password</label>
+        <div class="register-title">Register</div>
+        <div class="register-inputs">
+            <div class="username-input">
+                <input data-username-input type="text" id="username" name="username" class="register-input">
+                <label for="username">Username</label>
+            </div>
+            <div class="password-input">
+                <input data-password-input type="password" id="password" name="password" class="register-input">
+                <label for="password">Password</label>
+            </div>
+            <div class="password-confirm-input">
+                <input data-password-confirm-input type="password" id="password-confirm" name="password-confirm" class="register-input">
+                <label for="password-confirm">Confirm Password</label>
+            </div>
+            <div class="email-input">
+                <input data-email-input type="email" id="email" name="email" class="register-input">
+                <label for="email">Email</label>
+            </div>
         </div>
-        <div class="password-confirm-input">
-            <input data-password-confirm-input type="password" id="password-confirm" name="password-confirm" class="register-input">
-            <label for="password-confirm">Confirm Password</label>
+        <div class="register-button">
+            <button data-register-button>Register</button>
         </div>
-        <div class="email-input">
-            <input data-email-input type="email" id="email" name="email" class="register-input">
-            <label for="email">Email</label>
-        </div>
+        <div class="yes-account"><a data-yes-account>Already have an account? Login now!</a></div>
     </div>
-    <div class="register-button">
-        <button data-register-button>Register</button>
-    </div>
-    <div class="yes-account"><a href="./login.ejs">Already have an account? Login now!</a></div>
 </body>
 </html>

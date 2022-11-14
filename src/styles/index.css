@@ -15,10 +15,18 @@ body {
 	background: var(--secondary-color);
 }
 
+a {
+	cursor: pointer;
+}
+
 .index-body-content {
 	bottom: 0;
 	width: 100%;
 	z-index: -1;
 	height: 575px;
 	margin-top: 25px;
+}
+
+.register-panel {
+	display: none;
 }
