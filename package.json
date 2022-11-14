@@ -9,6 +9,7 @@
   "author": "AbubakarKang",
   "license": "ISC",
   "dependencies": {
+    "cryptr": "^6.0.3",
     "dotenv": "^16.0.3",
     "ejs-electron": "^2.1.1",
     "electron": "^21.2.3",
