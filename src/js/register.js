@@ -10,10 +10,6 @@ const registerButton = document.querySelector("[data-register-button]");
 const errorCloseButton = document.querySelector("[data-error-close-button]");
 const passwordConfirmInput = document.querySelector("[data-password-confirm-input]");
 
-//------------------------------\\ OTHERS //-------------------------------\\
-
-const allowedUsernameChars = "abcdefghijklmnopqrstuvwxyz0123456789_ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
 //-----------------------------\\ FUNCTIONS //-----------------------------\\
 
 registerButton.addEventListener("click", () => {
