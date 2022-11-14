@@ -14,9 +14,6 @@ const passwordConfirmInput = document.querySelector("[data-password-confirm-inpu
 
 const allowedUsernameChars = "abcdefghijklmnopqrstuvwxyz0123456789_ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-const { ipcRenderer } = require("electron");
-const ipc = ipcRenderer;
-
 //-----------------------------\\ FUNCTIONS //-----------------------------\\
 
 registerButton.addEventListener("click", () => {
