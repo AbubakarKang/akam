@@ -22,7 +22,6 @@ registerButton.addEventListener("click", () => {
 	const password = passwordInput.value;
 	const passwordConfirm = passwordConfirmInput.value;
 
-	// ** alert functions are to be replaced with custom error display messages
 	if (email === "" || username === "" || password === "" || passwordConfirm === "") {
 		return customAlert("Please fill all fields");
 	} else if (password !== passwordConfirm) {
@@ -57,17 +56,3 @@ const customAlert = error => {
 		errorDisplay.style.display = "none";
 	});
 };
-
-Array.from(allInputs).forEach(input => {
-	let inputLabel = findLabelForInput(input);
-	input.addEventListener("input", () => {
-		inputLabel.style.marginTop = "-10px";
-	});
-});
-
-function findLabelForInput(input) {
-	labels = document.getElementsByTagName("label");
-	for (var i = 0; i < labels.length; i++) {
-		if (labels[i].htmlFor == input.id) return labels[i];
-	}
-}
