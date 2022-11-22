@@ -9,8 +9,6 @@ const mongoose = require("mongoose");
 const path = require("path");
 const ipc = ipcMain;
 
-const cryptr = new Cryptr("myTotallySecretKey");
-
 //--------------------------\\ FUNCTIONS //--------------------------\\
 
 // Creating browser window
