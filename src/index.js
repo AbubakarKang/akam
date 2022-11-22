@@ -14,16 +14,16 @@ const ipc = ipcMain;
 // Creating browser window
 const createWindow = () => {
 	const mainWindow = new BrowserWindow({
-		width: 1000,
-		height: 600,
+		minWidth: 1000,
+		minHeight: 600,
 		frame: false,
-		resizable: false,
 		webPreferences: {
 			devTools: true,
 			nodeIntegration: true,
 			contextIsolation: false,
 		},
 	});
+	mainWindow.maximize();
 
 	mainWindow.loadURL(path.join(__dirname, "views/index.ejs"));
 

@@ -25,8 +25,8 @@
 
 .titlebar {
 	top: 0;
+	width: 100vw;
 	height: 25px;
-	width: 1000px;
 	position: fixed;
 	overflow: hidden;
 	-webkit-app-region: drag;
