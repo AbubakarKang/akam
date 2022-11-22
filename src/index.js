@@ -74,7 +74,6 @@ ipc.on("registerUser", (_, data) => {
 		password: hashedPassword,
 	});
 	newUser.save();
-	console.log(newUser);
 });
 
 // Login user
