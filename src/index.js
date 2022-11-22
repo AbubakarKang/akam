@@ -6,9 +6,10 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 const ejsElectron = require("ejs-electron");
 const User = require("./models/users");
 const mongoose = require("mongoose");
-const bcryptjs = require("bcryptjs");
 const path = require("path");
 const ipc = ipcMain;
+
+const cryptr = new Cryptr("myTotallySecretKey");
 
 //--------------------------\\ FUNCTIONS //--------------------------\\
 
@@ -39,21 +40,6 @@ const createWindow = () => {
 	// Testing code, to be removed
 	db.on("error", () => console.log("Error connecting to database"));
 	db.once("open", () => console.log("Connected to MongoDB"));
-
-	// Registering new user
-	ipc.on("registerUser", (_, data) => {
-		let dataPassword = data.password;
-
-		let salt = bcryptjs.genSaltSync(10);
-		let hashedPassword = bcryptjs.hashSync(dataPassword, salt);
-
-		let newUser = new User({
-			username: data.username,
-			email: data.email,
-			password: hashedPassword,
-		});
-		newUser.save();
-	});
 };
 
 //------------------------\\ APP FUNCTIONS //------------------------\\
