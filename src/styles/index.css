@@ -23,8 +23,9 @@ a {
 	bottom: 0;
 	width: 100%;
 	z-index: -1;
-	height: 575px;
+	overflow: hidden;
 	margin-top: 25px;
+	height: calc(100vh - 25px);
 }
 
 .register-panel {
