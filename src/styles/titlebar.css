@@ -10,6 +10,7 @@
 
 .right-side,
 .minimize-btn,
+.maximize-btn,
 .close-btn,
 .titlebar {
 	display: flex;
@@ -41,6 +42,7 @@
 }
 
 .minimize-btn,
+.maximize-btn,
 .close-btn {
 	width: 25px;
 	height: 25px;
@@ -48,7 +50,8 @@
 	cursor: pointer;
 }
 
-.minimize-btn:hover {
+.minimize-btn:hover,
+.maximize-btn:hover {
 	background: rgba(255, 255, 255, 0.3);
 }
 
@@ -57,7 +60,8 @@
 	background: red;
 }
 
-.minimize-btn {
+.minimize-btn,
+.maximize-btn {
 	width: 20px;
 	padding-right: 3px;
 	font-family: "Cantarell", sans-serif;

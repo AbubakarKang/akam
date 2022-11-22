@@ -29,6 +29,13 @@ const createWindow = () => {
 
 	ipc.on("closeApp", () => mainWindow.close());
 	ipc.on("minimizeApp", () => mainWindow.minimize());
+	ipc.on("maximizeApp", () => {
+		if (mainWindow.isMaximized()) {
+			mainWindow.unmaximize();
+		} else {
+			mainWindow.maximize();
+		}
+	});
 
 	//--------------------------\\ MONGOOSE //---------------------------\\
 
