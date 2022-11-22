@@ -5,8 +5,8 @@
 }
 
 :root {
-	--primary-color: #b3b3b3;
-	--secondary-color: rgb(236, 236, 236);
+	--primary-color: rgb(212, 212, 212);
+	--secondary-color: rgb(250, 250, 250);
 }
 
 body {
