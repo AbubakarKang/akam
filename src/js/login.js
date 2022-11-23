@@ -22,3 +22,15 @@ loginButton.addEventListener("click", () => {
 		password,
 	});
 });
+
+ipc.on("userNotFound", () => {
+	return customAlert(`Incorrect username.`);
+});
+
+ipc.on("wrongPassword", () => {
+	return customAlert(`Incorrect password.`);
+});
+
+ipc.on("alreadyLoggedIn", () => {
+	return customAlert("This user is already logged in, probably from another device.");
+});

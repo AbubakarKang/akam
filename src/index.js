@@ -3,6 +3,7 @@
 require("dotenv").config();
 
 const { app, BrowserWindow, ipcMain } = require("electron");
+const { findOneAndUpdate } = require("./models/users");
 const ejsElectron = require("ejs-electron");
 const User = require("./models/users");
 const mongoose = require("mongoose");
@@ -95,18 +96,33 @@ ipc.on("registerUser", (event, data) => {
 });
 
 // Login user
-ipc.on("loginUser", (_, data) => {
+ipc.on("loginUser", (event, data) => {
 	let receivedUsername = data.username;
 	let receivedPassword = data.password;
-	User.find({ username: data.username }, (error, data) => {
-		if (typeof data[0] === "undefined") return;
-		let foundUser = data[0];
+	User.find({ username: receivedUsername }, (error, data) => {
+		if (typeof data[0] === "undefined") {
+			return event.sender.send("userNotFound");
+		} else {
+			let foundUser = data[0];
+			let databaseUsername = foundUser.username;
+			let databasePassword = foundUser.password;
 
-		let databaseUsername = foundUser.username;
-		let databasePassword = foundUser.password;
-
-		bcryptjs.compare(receivedPassword, databasePassword, (error, res) => {
-			console.log(res);
-		});
+			bcryptjs.compare(receivedPassword, databasePassword, (error, res) => {
+				if (res) {
+					User.find({ username: receivedUsername }, (error, data) => {
+						let isUserLoggedIn = data[0].isLoggedIn;
+						if (isUserLoggedIn) {
+							return event.sender.send("alreadyLoggedIn");
+						} else {
+							User.findOneAndUpdate({ username: receivedUsername }, { isLoggedIn: true }, () => {
+								event.sender.send("userLoggedIn");
+							});
+						}
+					});
+				} else {
+					event.sender.send("wrongPassword");
+				}
+			});
+		}
 	});
 });
