@@ -54,6 +54,16 @@ ipc.on("userExists", (_, username) => {
 	return customAlert(`A user with the username ${username} already exists.`);
 });
 
+ipc.on("userRegistered", (_, data) => {
+	loginPage.style.zIndex = "2";
+	registerPage.style.zIndex = "1";
+	let username = data[0];
+	let password = data[1];
+
+	loginUsername.value = username;
+	loginPassowrd.value = password;
+});
+
 const customAlert = error => {
 	errorText.innerText = error;
 	errorDisplay.style.display = "block";

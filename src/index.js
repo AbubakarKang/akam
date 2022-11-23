@@ -69,6 +69,7 @@ ipc.on("registerUser", (event, data) => {
 	let receivedUsername = data.username;
 	let receivedPassword = data.password;
 	let receivedEmail = data.email;
+	let loginInfo = [receivedUsername, receivedPassword];
 
 	let salt = bcryptjs.genSaltSync(10);
 	let hashedPassword = bcryptjs.hashSync(receivedPassword, salt);
@@ -87,6 +88,7 @@ ipc.on("registerUser", (event, data) => {
 					userID: newUserID,
 				});
 				newUser.save();
+				event.sender.send("userRegistered", loginInfo);
 			});
 		}
 	});
