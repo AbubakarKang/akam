@@ -70,3 +70,42 @@
     color: rgb(130, 130, 130);
     font-family: 'Noto Sans', sans-serif;
 }
+
+.user-logged-box {
+	top: -30px;
+	left: 50%;
+	z-index: 99;
+	width: 250px;
+	height: 50px;
+	display: flex;
+    visibility: hidden;
+    padding: 0px 10px;
+	position: absolute;
+    text-align: center;
+    align-items: center;
+	border-radius: 10px;
+    word-wrap: break-word;
+	transform: translateX(-50%);
+    box-shadow: 0px 0px 5px -2px black;
+	background-color: var(--secondary-color);
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+@keyframes userLoggedBoxAnimation {
+    from {
+        top: -30px;
+        visibility: hidden;
+    } to {
+        top: 25px;
+        visibility: visible;
+    }
+}
+@keyframes userLoggedBoxAnimationRemove {
+    from {
+        top: 25px;
+        visibility: visible;
+    } to {
+        top: -30px;
+        visibility: hidden;
+    }
+}

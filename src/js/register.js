@@ -4,6 +4,7 @@ const errorText = document.querySelector("[data-error-text]");
 const errorDisplay = document.querySelector("[data-error-blackbg]");
 const registerButton = document.querySelector("[data-register-btn]");
 const registerEmail = document.querySelector("[data-register-email]");
+const userLoggedBox = document.querySelector("[data-user-logged-box]");
 const registerUsername = document.querySelector("[data-register-username]");
 const registerPassowrd = document.querySelector("[data-register-password]");
 const errorCloseButton = document.querySelector("[data-error-close-button]");
@@ -62,7 +63,15 @@ ipc.on("userRegistered", (_, data) => {
 
 	loginUsername.value = username;
 	loginPassowrd.value = password;
+	displayAccountCreation();
 });
+
+const displayAccountCreation = () => {
+	userLoggedBox.style.animation = "userLoggedBoxAnimation 300ms forwards";
+	setTimeout(() => {
+		userLoggedBox.style.animation = "userLoggedBoxAnimationRemove 300ms forwards";
+	}, 2000);
+};
 
 const customAlert = error => {
 	errorText.innerText = error;
