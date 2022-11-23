@@ -1,21 +1,17 @@
 //-----------------------------\\ ELEMENTS //-----------------------------\\
 
-const registerUsername = document.querySelector("[data-register-username]");
-const registerPassowrd = document.querySelector("[data-register-password]");
-const registerButton = document.querySelector("[data-register-btn]");
+const noAccountAnchor = document.querySelector("[data-no-account-link]");
 const loginUsername = document.querySelector("[data-login-username]");
 const loginPassowrd = document.querySelector("[data-login-password]");
+const registerPage = document.querySelector("[data-register-page]");
 const loginButton = document.querySelector("[data-login-btn]");
+const loginPage = document.querySelector("[data-login-page]");
 
 //-----------------------------\\ FUNCTIONS //-----------------------------\\
 
-registerButton.addEventListener("click", () => {
-	let username = registerUsername.value;
-	let password = registerPassowrd.value;
-	ipc.send("registerUser", {
-		username,
-		password,
-	});
+noAccountAnchor.addEventListener("click", () => {
+	loginPage.style.zIndex = "1";
+	registerPage.style.zIndex = "2";
 });
 
 loginButton.addEventListener("click", () => {

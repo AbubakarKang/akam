@@ -4,18 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/login.css">
     <script defer src="../js/login.js"></script>
 </head>
 <body>
-    <form action="register">
-        <input data-register-username type="text" placeholder="Username"></input>
-        <input data-register-password type="password" placeholder="Password"></input>
-        <input data-register-btn type="button" value="Register">
-    </form>
-    <form action="login">
-        <input data-login-username type="text" placeholder="Username"></input>
-        <input data-login-password type="password" placeholder="Password"></input>
-        <input data-login-btn type="button" value="Login">
-    </form>
+    <div data-login-page class="login-page">
+        <div class="login-title">Login</div>
+        <div class="login-inputs">
+            <div class="l-username-input-div">
+                <input data-login-username type="text" name="login-username-input" id="login-username-input" class="input" placeholder="Username">
+            </div>
+            <div class="l-password-input-div">
+                <input data-login-password type="password" name="login-password-input" id="login-password-input" class="input" placeholder="Password">
+            </div>
+            <div class="login-button-div">
+                <button data-login-btn class="login-button">Login</button>
+            </div>
+            <div class="no-account">
+                <a data-no-account-link class="no-account-link">Don't have an account? Register now.</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
