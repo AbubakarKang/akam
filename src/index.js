@@ -11,6 +11,8 @@ const bcryptjs = require("bcryptjs");
 const path = require("path");
 const ipc = ipcMain;
 
+let accountInUse = null;
+
 //--------------------------\\ FUNCTIONS //--------------------------\\
 
 // Creating browser window
@@ -37,6 +39,13 @@ const createWindow = () => {
 		} else {
 			mainWindow.maximize();
 		}
+	});
+
+	mainWindow.addListener("close", async () => {
+		if (!accountInUse) return;
+
+		await User.findOneAndUpdate({ username: accountInUse }, { isLoggedIn: false });
+		accountInUse = null;
 	});
 
 	//--------------------------\\ MONGOOSE //---------------------------\\
@@ -114,6 +123,7 @@ ipc.on("loginUser", (event, data) => {
 							return event.sender.send("alreadyLoggedIn");
 						} else {
 							User.findOneAndUpdate({ username: receivedUsername }, { isLoggedIn: true }, () => {
+								accountInUse = receivedUsername;
 								event.sender.send("userLoggedIn");
 							});
 						}
