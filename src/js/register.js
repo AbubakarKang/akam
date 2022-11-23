@@ -50,6 +50,10 @@ registerButton.addEventListener("click", () => {
 	});
 });
 
+ipc.on("userExists", (_, username) => {
+	return customAlert(`A user with the username ${username} already exists.`);
+});
+
 const customAlert = error => {
 	errorText.innerText = error;
 	errorDisplay.style.display = "block";

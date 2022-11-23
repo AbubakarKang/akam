@@ -65,15 +65,31 @@ app.on("activate", () => {
 });
 
 // Registering new user
-ipc.on("registerUser", (_, data) => {
-	let salt = bcryptjs.genSaltSync(10);
-	let hashedPassword = bcryptjs.hashSync(data.password, salt);
+ipc.on("registerUser", (event, data) => {
+	let receivedUsername = data.username;
+	let receivedPassword = data.password;
+	let receivedEmail = data.email;
 
-	let newUser = new User({
-		username: data.username,
-		password: hashedPassword,
+	let salt = bcryptjs.genSaltSync(10);
+	let hashedPassword = bcryptjs.hashSync(receivedPassword, salt);
+
+	User.find({ username: receivedUsername }, (error, data) => {
+		if (typeof data[0] !== "undefined") {
+			let existingUsername = data[0].username;
+			return event.sender.send("userExists", existingUsername);
+		} else {
+			User.find({}, (error, data) => {
+				let newUserID = data.length + 1;
+				let newUser = new User({
+					username: receivedUsername,
+					password: hashedPassword,
+					email: receivedEmail,
+					userID: newUserID,
+				});
+				newUser.save();
+			});
+		}
 	});
-	newUser.save();
 });
 
 // Login user
