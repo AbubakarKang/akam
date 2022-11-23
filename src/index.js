@@ -104,7 +104,6 @@ ipc.on("loginUser", (event, data) => {
 			return event.sender.send("userNotFound");
 		} else {
 			let foundUser = data[0];
-			let databaseUsername = foundUser.username;
 			let databasePassword = foundUser.password;
 
 			bcryptjs.compare(receivedPassword, databasePassword, (error, res) => {
