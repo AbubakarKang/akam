@@ -5,7 +5,10 @@ const userSchema = new mongoose.Schema({
 	username: String,
 	password: String,
 	email: String,
-	isLoggedIn: Boolean, // Can only login from 1 device
+	isLoggedIn: {
+		type: Boolean,
+		default: false,
+	},
 	creationDate: {
 		type: Date,
 		default: new Date(),
