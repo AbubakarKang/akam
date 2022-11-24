@@ -1,0 +1,58 @@
+.main-navigation {
+    top: 0;
+    left: 50%;
+    z-index: 10;
+    width: 500px;
+    height: 70px;
+    display: flex;
+    overflow: hidden;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+}
+
+.navigation-left-triangle {
+    left: 0;
+    width: 70px;
+    height: 100%;
+    position: absolute;
+    background: var(--primary-color);
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+
+.navigation-right-triangle {
+    right: 0;
+    width: 70px;
+    height: 100%;
+    position: absolute;
+    background: var(--primary-color);
+    clip-path: polygon(100% 0, 0 0, 0 100%);
+}
+
+.navigation-content {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    width: calc(100% - 140px);
+    justify-content: space-around;
+    background: var(--primary-color);
+}
+
+.settings-navigation {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-icon {
+    cursor: pointer;
+    font-size: 40px;
+    color: var(--secondary-color);
+}
+
+.nav-icon:hover {
+    color: white;
+    transform: scale(1.05);
+}
