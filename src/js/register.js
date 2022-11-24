@@ -32,7 +32,7 @@ registerButton.addEventListener("click", () => {
 		return customAlert("Password must be at least 6 characters long");
 	} else if (password.length > 20) {
 		return customAlert("Password must be less than 20 characters long");
-	} else if (!email.includes("@") || !email.includes(".")) {
+	} else if (!email.includes("@") || !email.includes(".") || email.length < 7) {
 		return customAlert("Please enter a valid email");
 	} else if (username.length < 6) {
 		return customAlert("Username must be at least 6 characters long");
