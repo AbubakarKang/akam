@@ -7,12 +7,14 @@
     <script src="https://kit.fontawesome.com/b20d558793.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../styles/main-navigation.css">
     <script defer src="../js/main-navigation.js"></script>
+    <script defer src="../js/add-account.js"></script>
 </head>
 <body>
+    <%- include("./add-account-panel"); %>
     <div class="main-navigation">
         <div class="navigation-left-triangle"></div>
         <div class="navigation-content">
-            <div class="add-navigation">
+            <div data-open-add-account-panel-btn class="add-navigation">
                 <i class="nav-icon fa-solid fa-plus"></i>
             </div>
             <div class="settings-navigation">
