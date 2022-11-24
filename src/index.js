@@ -48,6 +48,25 @@ const createWindow = () => {
 		accountInUse = null;
 	});
 
+	// User log out functionality
+	ipc.on("logUserOut", (event, data) => {
+		if (!accountInUse) {
+			console.log("No user found while signing out, closing window.");
+			mainWindow.close();
+			return;
+		}
+		User.find({ username: accountInUse }, (error, data) => {
+			if (typeof data[0] === "undefined") {
+				console.log("Error while signing out, closing window.");
+				mainWindow.close();
+			} else {
+				User.findOneAndUpdate({ username: accountInUse }, { isLoggedIn: false }, () => {
+					event.sender.send("userLoggedOut");
+				});
+			}
+		});
+	});
+
 	//--------------------------\\ MONGOOSE //---------------------------\\
 
 	mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
