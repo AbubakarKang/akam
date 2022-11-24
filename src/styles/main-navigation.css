@@ -39,7 +39,9 @@
     background: var(--primary-color);
 }
 
-.settings-navigation {
+.add-navigation,
+.settings-navigation,
+.sign-out-navigation {
     height: 100%;
     display: flex;
     align-items: center;
