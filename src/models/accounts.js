@@ -6,7 +6,7 @@ const accountSchema = new mongoose.Schema({
 	accountPassword: String,
 	accountEmail: String,
 	accountInfo: String,
-	accountImage: String,
+	// accountImage: String,
 	creationDate: {
 		type: Date,
 		default: new Date(),

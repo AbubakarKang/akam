@@ -23,7 +23,6 @@ a {
 	bottom: 0;
 	width: 100%;
 	z-index: -1;
-	overflow: hidden;
 	margin-top: 25px;
 	height: calc(100vh - 25px);
 }
