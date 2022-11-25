@@ -88,7 +88,7 @@
 	background: var(--primary-color);
 }
 
-input[type="file"] {
+#image-uploader-input {
 	display: none;
 }
 
