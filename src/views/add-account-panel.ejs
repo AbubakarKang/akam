@@ -10,7 +10,25 @@
     <div data-add-account-panel class="add-account-panel">
         <div class="add-account-box">
             <div class="add-account-content">
-
+                <div class="inputs">
+                    <div class="account-name">
+                        <input data-account-input type="text" name="account-name" id="account-name" class="input" placeholder="Account name">
+                    </div>
+                    <div class="account-email">
+                        <input data-email-input type="text" name="account-email" id="account-email" class="input" placeholder="Email">
+                    </div>
+                    <div class="account-password">
+                        <input data-password-input type="password" name="account-password" id="account-password" class="input" placeholder="Password">
+                    </div>
+                    <div class="account-information">
+                        <input data-information-input type="text" name="account-information" id="information-comment" class="input" placeholder="Additional Information">
+                    </div>
+                </div>
+                <div class="image-uploader">
+                    <label for="image-uploader-input" class="image-uploader-input">Upload Logo</label>
+                    <input data-image-uploader-input type="file" name="image-uploader-input" id="image-uploader-input">
+                    <div data-uploaded-image-display class="display-uploaded-image"></div>
+                </div>
             </div>
             <div class="add-account-buttons">
                 <button data-add-account-button class="add-account-button">Add account</button>
