@@ -4,6 +4,7 @@ require("dotenv").config();
 
 const { app, BrowserWindow, ipcMain } = require("electron");
 const { findOneAndUpdate } = require("./models/users");
+const Account = require("./models/accounts");
 const ejsElectron = require("ejs-electron");
 const User = require("./models/users");
 const mongoose = require("mongoose");
@@ -166,4 +167,24 @@ ipc.on("loginUser", (event, data) => {
 			});
 		}
 	});
+});
+
+ipc.on("mainAddAccount", (event, data) => {
+	let uploadedImage = data.uploadedImage;
+	let accountName = data.accountName;
+	let password = data.password;
+	let email = data.email;
+	let info = data.info;
+
+	let displayAccountInfo = [uploadedImage, accountName, password, email, info];
+
+	let newAccount = new Account({
+		user: accountInUse,
+		accountName: accountName,
+		accountPassword: password,
+		accountEmail: email,
+		accountInfo: info,
+		accountImage: uploadedImage,
+	});
+	newAccount.save();
 });
