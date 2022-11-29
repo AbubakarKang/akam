@@ -15,17 +15,21 @@ const uploadedImageDisplay = document.querySelector("[data-uploaded-image-displa
 
 //------------------------------\\ OTHERS //-------------------------------\\
 
-let readerResult;
 let uploadedImage;
 
 //-----------------------------\\ FUNCTIONS //-----------------------------\\
 
 imageUploaderInput.addEventListener("change", function () {
-	console.log(imageUploaderInput.value);
 	const reader = new FileReader();
 	reader.addEventListener("load", () => {
 		readerResult = reader.result;
-		uploadedImageDisplay.style.backgroundImage = `url(${readerResult})`;
+		fetch(readerResult)
+			.then(res => res.blob())
+			.then(blob => {
+				let url = URL.createObjectURL(blob);
+				uploadedImage = url;
+				uploadedImageDisplay.style.backgroundImage = `url(${url})`;
+			});
 	});
 	reader.readAsDataURL(this.files[0]);
 });
@@ -52,7 +56,7 @@ const addAccount = () => {
 		password,
 		info,
 		email,
-		// uploadedImage,
+		uploadedImage,
 	});
 };
 
@@ -74,6 +78,7 @@ ipc.on("receiveAccounts", (event, data) => {
 		let receivedPassword = accountData.accountPassword;
 		let receivedEmail = accountData.accountEmail;
 		let receivedInfo = accountData.accountInfo;
+		console.log(receivedImage);
 
 		let accountDiv = document.createElement("div");
 		accountsBody.append(accountDiv);
