@@ -126,7 +126,7 @@ ipc.on("receiveAccounts", (event, data) => {
 		accountInfoDiv.innerText = receivedInfo;
 
 		// This is what the code above outputs in HTML
-		/*<div class="account">
+		/*<div class="added-account">
 			<div class="account-left-content">
 				<div style="background-image:url(${receivedImage})" class="account-image"></div>
 			</div>
