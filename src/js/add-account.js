@@ -34,7 +34,14 @@ imageUploaderInput.addEventListener("change", function () {
 	reader.readAsDataURL(this.files[0]);
 });
 
-openPanelButton.addEventListener("click", () => (addAccountPanel.style.display = "block"));
+openPanelButton.addEventListener("click", () => {
+	addAccountPanel.style.display = "block";
+	accountInput.value = "";
+	passwordInput.value = "";
+	informationInput.value = "";
+	emailInput.value = "";
+	uploadedImageDisplay.style.backgroundImage = "";
+});
 panelCloseButton.addEventListener("click", () => (addAccountPanel.style.display = "none"));
 addAccountButton.addEventListener("click", () => addAccount());
 
@@ -58,6 +65,7 @@ const addAccount = () => {
 		email,
 		uploadedImage,
 	});
+	ipc.send("getAllAccounts");
 };
 
 ipc.on("displayAccountAddition", (event, data) => {
@@ -66,7 +74,6 @@ ipc.on("displayAccountAddition", (event, data) => {
 	accountAdditionText.innerText = `Your account ${receivedAccountName} has been successfully added!`;
 	displayAccountCreation();
 	accountsBody.innerHTML = "";
-	ipc.send("getAllAccounts");
 });
 
 ipc.on("receiveAccounts", (event, data) => {
@@ -78,7 +85,6 @@ ipc.on("receiveAccounts", (event, data) => {
 		let receivedPassword = accountData.accountPassword;
 		let receivedEmail = accountData.accountEmail;
 		let receivedInfo = accountData.accountInfo;
-		console.log(receivedImage);
 
 		let accountDiv = document.createElement("div");
 		accountsBody.append(accountDiv);
@@ -90,7 +96,7 @@ ipc.on("receiveAccounts", (event, data) => {
 		let accountImageDiv = document.createElement("div");
 		accountLeftContentDiv.append(accountImageDiv);
 		accountImageDiv.classList.add("added-account-image");
-		accountImageDiv.style.backgroundImage = `url${receivedImage}`;
+		accountImageDiv.style.backgroundImage = `url(${receivedImage})`;
 
 		let accountRightContentDiv = document.createElement("div");
 		accountDiv.append(accountRightContentDiv);
