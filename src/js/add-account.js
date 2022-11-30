@@ -125,6 +125,7 @@ ipc.on("receiveAccounts", (event, data) => {
 		accountInfoDiv.classList.add("added-account-information");
 		accountInfoDiv.innerText = receivedInfo;
 
+		addAccountFunctionality(accountDiv, receivedImage, receivedAccountName, receivedPassword, receivedEmail, receivedInfo);
 		// This is what the code above outputs in HTML
 		/*<div class="added-account">
 			<div class="account-left-content">

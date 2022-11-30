@@ -5,8 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/accounts.css">
+    <script defer src="../js/accounts.js"></script>
 </head>
 <body>
+    <div data-account-info class="account-info">
+        <div class="account-info-box">
+            <div data-account-info-content class="account-info-content">
+                <div class="account-info-content-left">
+                    <div data-account-info-image class="account-info-image"></div>
+                </div>
+                <div class="account-info-content-right">
+                    <div class="account-info-username">Username: <span data-account-info-username></span></div>
+                    <div class="account-info-password">Password: <span data-account-info-password></span></div>
+                    <div class="account-info-email">Email: <span data-account-info-email></span></div>
+                    <div class="account-info-information">Additional information: <span data-account-info-information></span></div>
+                </div>
+            </div>
+            <button data-account-info-button class="account-info-close-button">Close</button>
+        </div>
+    </div>
     <div data-accounts-body class="accounts-body">
     </div>
 </body>
