@@ -112,33 +112,21 @@ ipc.on("receiveAccounts", (event, data) => {
 
 		let accountPasswordDiv = document.createElement("div");
 		accountDetailsDiv.append(accountPasswordDiv);
-		accountPasswordDiv.classList.add("added-account-password");
-		accountPasswordDiv.innerText = receivedPassword;
-
-		let accountEmailDiv = document.createElement("div");
-		accountDetailsDiv.append(accountEmailDiv);
-		accountEmailDiv.classList.add("added-account-email");
-		accountEmailDiv.innerText = receivedEmail;
-
-		let accountInfoDiv = document.createElement("div");
-		accountDetailsDiv.append(accountInfoDiv);
-		accountInfoDiv.classList.add("added-account-information");
-		accountInfoDiv.innerText = receivedInfo;
+		accountPasswordDiv.classList.add("added-account-instruction");
+		accountPasswordDiv.innerText = "Click to open more information about the account.";
 
 		addAccountFunctionality(accountDiv, receivedImage, receivedAccountName, receivedPassword, receivedEmail, receivedInfo);
 		// This is what the code above outputs in HTML
 		/*<div class="added-account">
-			<div class="account-left-content">
-				<div style="background-image:url(${receivedImage})" class="account-image"></div>
+			<div class="added-account-left-content">
+				<div style="background-image:url(${receivedImage})" class="added-account-image"></div>
 			</div>
-			<div class="account-right-content">
-				<div class="account-name">${receivedAccountName}</div>
-				<div class="account-details">
-					<div class="account-password">${receivedPassword}</div>
-					<div class="account-email">${receivedEmail}</div>
-					<div class="account-information">${receivedInfo}</div>
+			<div class="added-account-right-content">
+				<div class="added-account-name">${receivedAccountName}</div>
+				<div class="added-account-details">
+					<div class="added-account-password">Click to open more information about the account.</div>
 				</div>
 			</div>
-		</div>;*/
+		</div>*/
 	});
 });
