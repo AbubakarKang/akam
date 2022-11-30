@@ -53,6 +53,10 @@ const addAccount = () => {
 
 	if (accountName === "" || password === "" || info === "" || email === "") {
 		return customAlert("Please fill all fields");
+	} else if (accountName.length > 20) {
+		return customAlert("Account name should not be more than 20 characters");
+	} else if (info.length > 40) {
+		return customAlert("Information should not be more than 40 characters.");
 	}
 	if (typeof uploadedImage === "undefined") {
 		return customAlert("You have to upload an image.");
