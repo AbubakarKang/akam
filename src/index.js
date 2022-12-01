@@ -174,16 +174,16 @@ ipc.on("mainAddAccount", (event, data) => {
 	let accountName = data.accountName;
 	let password = data.password;
 	let email = data.email;
-	let info = data.info;
+	let notes = data.notes;
 
-	let displayAccountInfo = [uploadedImage, accountName, password, email, info];
+	let displayAccountInfo = [uploadedImage, accountName, password, email, notes];
 
 	let newAccount = new Account({
 		user: accountInUse,
 		accountName: accountName,
 		accountPassword: password,
 		accountEmail: email,
-		accountInfo: info,
+		accountNotes: notes,
 		accountImage: uploadedImage,
 	});
 	newAccount.save();

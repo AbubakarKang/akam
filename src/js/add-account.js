@@ -1,11 +1,11 @@
 //-----------------------------\\ ELEMENTS //-----------------------------\\
 
+const notesInput = document.querySelector("[data-notes-input]");
 const emailInput = document.querySelector("[data-email-input]");
 const accountInput = document.querySelector("[data-account-input]");
 const accountsBody = document.querySelector("[data-accounts-body]");
 const passwordInput = document.querySelector("[data-password-input]");
 const addAccountPanel = document.querySelector("[data-add-account-panel]");
-const informationInput = document.querySelector("[data-information-input]");
 const panelCloseButton = document.querySelector("[data-panel-close-button]");
 const addAccountButton = document.querySelector("[data-add-account-button]");
 const accountAdditionText = document.querySelector("[data-user-logged-text]");
@@ -38,7 +38,7 @@ openPanelButton.addEventListener("click", () => {
 	addAccountPanel.style.display = "block";
 	accountInput.value = "";
 	passwordInput.value = "";
-	informationInput.value = "";
+	notesInput.value = "";
 	emailInput.value = "";
 	uploadedImageDisplay.style.backgroundImage = "";
 });
@@ -48,15 +48,15 @@ addAccountButton.addEventListener("click", () => addAccount());
 const addAccount = () => {
 	let accountName = accountInput.value;
 	let password = passwordInput.value;
-	let info = informationInput.value;
+	let notes = notesInput.value;
 	let email = emailInput.value;
 
-	if (accountName === "" || password === "" || info === "" || email === "") {
+	if (accountName === "" || password === "" || notes === "" || email === "") {
 		return customAlert("Please fill all fields");
 	} else if (accountName.length > 20) {
 		return customAlert("Account name should not be more than 20 characters");
-	} else if (info.length > 40) {
-		return customAlert("Information should not be more than 40 characters.");
+	} else if (notes.length > 40) {
+		return customAlert("Notes should not be more than 40 characters.");
 	}
 	if (typeof uploadedImage === "undefined") {
 		return customAlert("You have to upload an image.");
@@ -65,7 +65,7 @@ const addAccount = () => {
 	ipc.send("mainAddAccount", {
 		accountName,
 		password,
-		info,
+		notes,
 		email,
 		uploadedImage,
 	});
@@ -88,7 +88,7 @@ ipc.on("receiveAccounts", (event, data) => {
 		let receivedAccountName = accountData.accountName;
 		let receivedPassword = accountData.accountPassword;
 		let receivedEmail = accountData.accountEmail;
-		let receivedInfo = accountData.accountInfo;
+		let receivedNotes = accountData.accountNotes;
 
 		let accountDiv = document.createElement("div");
 		accountsBody.append(accountDiv);
@@ -119,7 +119,7 @@ ipc.on("receiveAccounts", (event, data) => {
 		accountPasswordDiv.classList.add("added-account-instruction");
 		accountPasswordDiv.innerText = "Click to open more information about the account.";
 
-		addAccountFunctionality(accountDiv, receivedImage, receivedAccountName, receivedPassword, receivedEmail, receivedInfo);
+		addAccountFunctionality(accountDiv, receivedImage, receivedAccountName, receivedPassword, receivedEmail, receivedNotes);
 		// This is what the code above outputs in HTML
 		/*<div class="added-account">
 			<div class="added-account-left-content">
